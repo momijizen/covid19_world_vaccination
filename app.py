@@ -8,7 +8,14 @@ import json
 import pandas as pd
 
 #token = open("mapbox.mapbox_token").read() # you will need your own token
+# Create a dash application
+app = dash.Dash(__name__)
+
 server = app.server
+
+# REVIEW1: Clear the layout and do not display exception till callback gets executed
+app.config.suppress_callback_exceptions = True
+
 
 path = 'https://raw.githubusercontent.com/momijizen/covid19_world_vaccination/main/countries.geojson'
 with urlopen(path) as response:
