@@ -8,12 +8,13 @@ import json
 import pandas as pd
 
 #token = open("mapbox.mapbox_token").read() # you will need your own token
+server = app.server
 
 path = 'https://raw.githubusercontent.com/momijizen/covid19_world_vaccination/main/countries.geojson'
 with urlopen(path) as response:
     geojson = json.load(response)
 
-df_data = pd.read_csv('country_vaccinations.csv')
+df_data = pd.read_csv('https://raw.githubusercontent.com/momijizen/covid19_world_vaccination/main/country_vaccinations.csv')
 data_countries = df_data.sort_values('date').drop_duplicates('country',keep='last')
 
 #df = px.data.election()
